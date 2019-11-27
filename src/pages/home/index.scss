@@ -1,5 +1,7 @@
+@import '../../styles/variables.scss';
+
 .Home {
-    p {
-        color: red;
+    .content {
+        margin-left: $menu-width;
     }
 }
