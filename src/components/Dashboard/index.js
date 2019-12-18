@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import levels from '../../constants/levels';
 import './index.scss';
 
 class Dashboard extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            count: 0,
+            score: 0,
         };
         this.makeRadial = this.makeRadial.bind(this);
+        this.getLevel = this.getLevel.bind(this);
     }
 
     makeRadial(amount = 60) {
@@ -23,23 +25,26 @@ class Dashboard extends Component {
         );
     }
 
+    getLevel() {
+        let level = levels.find(item => this.state.score >= item.lo
+            && this.state.score <= item.hi);
+
+        return level.description;
+    }
+
     render() {
         let radials = this.makeRadial(28);
 
         return (
             <div className='Dashboard'>
-                <div className="table">
-                    <div className="table-cell">
-                        <div id="main">
-                            <div id="home">
-                                <div id="radial">
-                                    {radials}
-                                    <div id="empty"></div>
-                                </div>
-                                <h1 id="countdown">{this.state.count}</h1>
-                                <div id="mph">mph</div>
-                            </div>
+                <div id="main">
+                    <div id="home">
+                        <div id="radial">
+                            {radials}
+                            <div id="empty"></div>
                         </div>
+                        <h1 id="countdown">{this.state.score}</h1>
+                        <div id="level">{this.getLevel()}</div>
                     </div>
                 </div>
             </div>
