@@ -20,7 +20,7 @@ const Menu = () => {
 
     return (
         <div className='Menu'>
-            {items.map((item, index) => <li key={index}><Link to={item.link}>{item.name}</Link></li>)}
+            {items.map((item, index) => <li key={index} data-testid='item'><Link to={item.link}>{item.name}</Link></li>)}
         </div>
     );
 }
