@@ -5,9 +5,6 @@ import './index.scss';
 class Dashboard extends Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            score: 0,
-        };
         this.makeRadial = this.makeRadial.bind(this);
         this.getLevel = this.getLevel.bind(this);
     }
@@ -26,8 +23,8 @@ class Dashboard extends Component {
     }
 
     getLevel() {
-        let level = levels.find(item => this.state.score >= item.lo
-            && this.state.score <= item.hi);
+        let level = levels.find(item => this.props.score >= item.lo
+            && this.props.score <= item.hi);
 
         return level.description;
     }
@@ -43,8 +40,8 @@ class Dashboard extends Component {
                             {radials}
                             <div id="empty"></div>
                         </div>
-                        <h1 id="countdown">{this.state.score}</h1>
-                        <div id="level">{this.getLevel()}</div>
+                        <h1 id="score">{this.props.score}</h1>
+                        <div id="level" data-testid='level'>{this.getLevel()}</div>
                     </div>
                 </div>
             </div>

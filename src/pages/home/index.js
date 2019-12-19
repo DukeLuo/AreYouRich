@@ -9,7 +9,7 @@ export class Home extends Component {
             <div className='Home' >
                 <Menu />
                 <section className='content'>
-                    <Dashboard />
+                    <Dashboard score={0} />
                 </section>
             </div>
         );
