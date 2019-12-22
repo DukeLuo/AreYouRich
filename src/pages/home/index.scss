@@ -3,5 +3,16 @@
 .Home {
     .content {
         margin-left: $menu-width;
+        height: $page-height;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .poem {
+            font-style: italic;
+            font-size: 32px;
+            font-weight: normal;
+            letter-spacing: 4px;
+        }
     }
 }
