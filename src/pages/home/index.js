@@ -21,7 +21,7 @@ export class Home extends Component {
 
     render() {
         return (
-            <div className='Home' >
+            <div className='Home' data-testid='home'>
                 <Menu />
                 <section className='content'>
                     <h2 className='poem'>{this.state.poem}</h2>
