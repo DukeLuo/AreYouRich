@@ -2,7 +2,9 @@
 `yarn install`
 
 ### Run
-`yarn start`
+`yarn dev`
+
+`yarn prod`
 
 ### Test
 `yarn test`
