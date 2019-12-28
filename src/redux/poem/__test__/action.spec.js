@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as types from '../constant';
+import * as types from '../type';
 import * as actions from '../action';
 import { getPoem as mockGetPoem } from '../../../api';
 

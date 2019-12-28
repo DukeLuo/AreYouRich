@@ -1,11 +1,11 @@
-import {GET_A_POEM} from './constant';
+import { GET_A_POEM } from './type';
 
 const initState = {
     poem: '',
 };
 
 export default (state = initState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case GET_A_POEM: {
             return {
                 ...state,

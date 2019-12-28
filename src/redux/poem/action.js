@@ -1,4 +1,4 @@
-import { GET_A_POEM } from './constant';
+import { GET_A_POEM } from './type';
 import * as apis from '../../api';
 
 const getPoem = () =>
