@@ -1,18 +1,15 @@
+import { handleAction } from 'redux-actions';
 import { GET_A_POEM } from './type';
 
 const initState = {
     poem: '',
 };
 
-export default (state = initState, action) => {
-    switch (action.type) {
-        case GET_A_POEM: {
-            return {
-                ...state,
-                poem: action.payload,
-            };
-        }
-        default:
-            return state;
-    }
-}
+export default handleAction(
+    GET_A_POEM,
+    (state, { payload }) => ({
+        ...state,
+        poem: payload,
+    }),
+    initState,
+);
