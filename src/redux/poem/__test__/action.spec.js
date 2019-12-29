@@ -9,19 +9,20 @@ const mockStore = configureStore(middlewares);
 const store = mockStore({
     poemReducer: {
         poem: '',
-    }
+    },
 });
 
 jest.mock('../../../api');
 
 describe('The poem action', () => {
-
     it('should create an action to get a poem', () => {
-        const content = '道可道，非常道。'
-        const expectedAction = [{
-            type: types.GET_A_POEM,
-            payload: content,
-        }];
+        const content = '道可道，非常道。';
+        const expectedAction = [
+            {
+                type: types.GET_A_POEM,
+                payload: content,
+            },
+        ];
 
         mockGetPoem.mockResolvedValueOnce({
             content,
@@ -31,5 +32,4 @@ describe('The poem action', () => {
             expect(store.getActions()).toEqual(expectedAction);
         });
     });
-
 });

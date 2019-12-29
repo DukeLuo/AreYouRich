@@ -5,7 +5,6 @@ import { Home } from '..';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('The home page', () => {
-
     it('should show a poem', () => {
         const content = '道可道，非常道。';
         const props = {
@@ -17,5 +16,4 @@ describe('The home page', () => {
         expect(props.getPoem).toBeCalledTimes(1);
         expect(getByTestId('home')).toHaveTextContent(content);
     });
-
 });

@@ -5,7 +5,6 @@ import Dashboard from '../index';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('The Dashboard component', () => {
-
     it('should show Excellent', () => {
         const { getByTestId } = render(<Dashboard score={90} />);
 
@@ -35,6 +34,4 @@ describe('The Dashboard component', () => {
 
         expect(getByTestId('level')).toHaveTextContent('Unsatisfactory');
     });
-
 });
-

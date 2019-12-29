@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const ParcelProxyServer = require('parcel-proxy-server');
 
 const server = new ParcelProxyServer({
@@ -21,5 +22,7 @@ server.bundler.on('buildEnd', () => {
 });
 
 server.listen(1234, () => {
-    console.log('Parcel proxy server has started, Server running at http://localhost:1234');
+    console.log(
+        'Parcel proxy server has started, Server running at http://localhost:1234'
+    );
 });

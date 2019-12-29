@@ -1,22 +1,26 @@
 export default [
     {
-        description: "Excellent",
+        description: 'Excellent',
         lo: 85,
         hi: 100,
-    }, {
-        description: "Very Good",
+    },
+    {
+        description: 'Very Good',
         lo: 75,
         hi: 84,
-    }, {
-        description: "Good",
+    },
+    {
+        description: 'Good',
         lo: 65,
         hi: 74,
-    }, {
-        description: "Accepted",
+    },
+    {
+        description: 'Accepted',
         lo: 50,
         hi: 64,
-    }, {
-        description: "Unsatisfactory",
+    },
+    {
+        description: 'Unsatisfactory',
         lo: 0,
         hi: 49,
     },

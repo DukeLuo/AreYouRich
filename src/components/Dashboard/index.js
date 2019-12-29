@@ -9,45 +9,47 @@ class Dashboard extends Component {
         this.getLevel = this.getLevel.bind(this);
     }
 
+    // eslint-disable-next-line class-methods-use-this
     makeRadial(amount = 60) {
-        let degree = 360 / amount;
+        const degree = 360 / amount;
 
-        return [...Array(amount / 2).keys()].map((_, index) => {
-            return (
-                <div key={index} className={`tick tick-${((index + 1) * degree).toFixed(0)}`}>
-                    <div className='dot dot-top'></div>
-                    <div className='dot dot-bottom'></div>
-                </div>);
-        }
-        );
+        return [...Array(amount / 2).keys()].map((_, index) => (
+            <div
+                key={index}
+                className={`tick tick-${((index + 1) * degree).toFixed(0)}`}
+            >
+                <div className="dot dot-top"></div>
+                <div className="dot dot-bottom"></div>
+            </div>
+        ));
     }
 
     getLevel() {
-        let level = levels.find(item => this.props.score >= item.lo
-            && this.props.score <= item.hi);
+        const level = levels.find(
+            (item) => this.props.score >= item.lo && this.props.score <= item.hi
+        );
 
         return level.description;
     }
 
     render() {
-        let radials = this.makeRadial(28);
-
         return (
-            <div className='Dashboard'>
+            <div className="Dashboard">
                 <div id="main">
                     <div id="home">
                         <div id="radial">
-                            {radials}
+                            {this.makeRadial(28)}
                             <div id="empty"></div>
                         </div>
                         <h1 id="score">{this.props.score}</h1>
-                        <div id="level" data-testid='level'>{this.getLevel()}</div>
+                        <div id="level" data-testid="level">
+                            {this.getLevel()}
+                        </div>
                     </div>
                 </div>
             </div>
         );
     }
-
 }
 
 export default Dashboard;

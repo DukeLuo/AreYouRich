@@ -1,8 +1,8 @@
+/* eslint-disable no-undefined */
 import poemReducer from '../reducer';
 import * as types from '../type';
 
 describe('The poem reducer', () => {
-
     it('should return the initial state', () => {
         expect(poemReducer(undefined, {})).toEqual({
             poem: '',
@@ -23,5 +23,4 @@ describe('The poem reducer', () => {
             poem: content,
         });
     });
-
 });

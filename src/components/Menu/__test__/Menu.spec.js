@@ -5,7 +5,6 @@ import Menu from '../index';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('The Menu component', () => {
-
     let getAllByTestId;
 
     beforeEach(() => {
@@ -31,6 +30,4 @@ describe('The Menu component', () => {
     it('should have "资产生息能力检测"', () => {
         expect(getAllByTestId('item')[3]).toHaveTextContent('资产生息能力检测');
     });
-
 });
-

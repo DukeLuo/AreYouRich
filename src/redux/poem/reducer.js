@@ -11,5 +11,5 @@ export default handleAction(
         ...state,
         poem: payload,
     }),
-    initState,
+    initState
 );

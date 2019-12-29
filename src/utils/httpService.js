@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const apiError = (status, message) => {
     console.error('API Error: ', status, message);
 
@@ -16,15 +17,16 @@ const isText = (response) => {
     return contentType && /^text\/.*plain.*/.test(contentType);
 };
 
-const getErrorMessage = response => response.text().then(text => (
-    text
-        ? Promise.resolve(text)
-        : Promise.resolve()
-));
+const getErrorMessage = (response) =>
+    response
+        .text()
+        .then((text) => (text ? Promise.resolve(text) : Promise.resolve()));
 
 const handleResponse = (response) => {
     if (!response.ok) {
-        return getErrorMessage(response).then(errorMessage => apiError(response.status, errorMessage));
+        return getErrorMessage(response).then((errorMessage) =>
+            apiError(response.status, errorMessage)
+        );
     }
     if (isJson(response)) {
         return response.json();
@@ -51,14 +53,13 @@ const request = ({ method, headers, body, path, query }) => {
     }
     if (query) {
         const params = Object.keys(query)
-            .map(k => `${k}=${query[k]}`)
+            .map((k) => `${k}=${query[k]}`)
             .join('&');
 
         url = url.concat(`?${params}`);
     }
 
-    return fetch(url, Object.assign({}, options))
-        .then(handleResponse);
+    return fetch(url, { ...options }).then(handleResponse);
 };
 
 export default {
