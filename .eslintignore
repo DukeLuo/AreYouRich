@@ -1,0 +1,6 @@
+.git
+.cache
+.idea/
+.cache/
+dist/
+node_modules/
