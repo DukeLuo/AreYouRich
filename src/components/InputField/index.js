@@ -18,7 +18,11 @@ export class InputField extends Component {
             </div>
         ));
 
-        return <div className="input-field">{inputFields}</div>;
+        return (
+            <div className="input-field" data-testid="input-field">
+                {inputFields}
+            </div>
+        );
     }
 }
 
