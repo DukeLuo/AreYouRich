@@ -17,28 +17,38 @@ export class Home extends Component {
                 type: 'text',
                 id: 'input-field-1',
                 description: '用户名',
-                onChange: () => this.setState({ username: event.target.value }),
+                options: {
+                    onChange: () =>
+                        this.setState({ username: event.target.value }),
+                },
             },
             {
                 type: 'text',
                 id: 'input-field-2',
                 description: '密码',
-                onChange: () => this.setState({ password: event.target.value }),
+                options: {
+                    onChange: () =>
+                        this.setState({ password: event.target.value }),
+                },
             },
             {
                 type: 'button',
                 id: 'register-btn',
-                value: '注册',
-                onClick: () =>
-                    this.props.register(
-                        this.state.username,
-                        this.state.password
-                    ),
+                options: {
+                    value: '注册',
+                    onClick: () =>
+                        this.props.register(
+                            this.state.username,
+                            this.state.password
+                        ),
+                },
             },
             {
                 type: 'button',
                 id: 'login-btn',
-                value: '登录',
+                options: {
+                    value: '登录',
+                },
             },
         ];
 
