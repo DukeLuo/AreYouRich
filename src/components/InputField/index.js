@@ -7,11 +7,16 @@ export class InputField extends Component {
         const { config } = this.props;
         const inputFields = config.map((item, index) => (
             <div className="field" key={index}>
-                <label htmlFor={item.id}>{item.description}:</label>
+                <label htmlFor={item.id}>
+                    {item.description && `${item.description}：`}
+                </label>
                 <input
                     type={item.type}
                     id={item.id}
                     name={item.id}
+                    value={item.value}
+                    onClick={item.onClick}
+                    onChange={item.onChange}
                     required
                     {...item.restriction}
                 />

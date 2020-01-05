@@ -24,8 +24,11 @@ describe('The InputField component', () => {
 
         expect(getByTestId('input-field')).toHaveTextContent('文本输入框');
         expect(getByTestId('input-field')).toHaveTextContent('数字输入框');
-        expect(getByLabelText('文本输入框:')).toHaveAttribute('type', 'text');
-        expect(getByLabelText('数字输入框:')).toHaveAttribute('type', 'number');
+        expect(getByLabelText('文本输入框：')).toHaveAttribute('type', 'text');
+        expect(getByLabelText('数字输入框：')).toHaveAttribute(
+            'type',
+            'number'
+        );
     });
 
     it('should be restrictions on text input', () => {
@@ -46,8 +49,14 @@ describe('The InputField component', () => {
         );
 
         expect(getByTestId('input-field')).toHaveTextContent('文本输入框');
-        expect(getByLabelText('文本输入框:')).toHaveAttribute('minlength', '4');
-        expect(getByLabelText('文本输入框:')).toHaveAttribute('maxlength', '8');
-        expect(getByLabelText('文本输入框:')).toHaveAttribute('size', '10');
+        expect(getByLabelText('文本输入框：')).toHaveAttribute(
+            'minlength',
+            '4'
+        );
+        expect(getByLabelText('文本输入框：')).toHaveAttribute(
+            'maxlength',
+            '8'
+        );
+        expect(getByLabelText('文本输入框：')).toHaveAttribute('size', '10');
     });
 });
