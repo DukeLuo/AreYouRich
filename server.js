@@ -11,8 +11,11 @@ const server = new ParcelProxyServer({
                 '^/api/poem': '/all.json',
             },
         },
-        '/api': {
-            target: 'https://example.com/api',
+        '/api/users/*': {
+            target: 'http://localhost:8080',
+            pathRewrite: {
+                '^/api': '',
+            },
         },
     },
 });
