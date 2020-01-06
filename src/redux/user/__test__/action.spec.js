@@ -64,4 +64,16 @@ describe('The user action', () => {
             expect(store.getActions()).toEqual(expectedAction);
         });
     });
+
+    it('should create a action for clearing error', () => {
+        const expectedAction = [
+            {
+                type: types.CLEAR_ERROR,
+            },
+        ];
+
+        store.dispatch(actions.clearError());
+
+        expect(store.getActions()).toEqual(expectedAction);
+    });
 });
