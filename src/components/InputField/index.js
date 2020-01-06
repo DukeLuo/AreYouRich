@@ -14,6 +14,9 @@ export class InputField extends Component {
                     type={item.type}
                     id={item.id}
                     name={item.id}
+                    value={item.value}
+                    onClick={item.onClick}
+                    onChange={item.onChange}
                     required
                     {...item.options}
                 />
