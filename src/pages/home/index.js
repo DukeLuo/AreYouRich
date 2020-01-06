@@ -24,7 +24,7 @@ export class Home extends Component {
                 },
             },
             {
-                type: 'text',
+                type: 'password',
                 id: 'input-field-2',
                 description: '密码',
                 options: {
