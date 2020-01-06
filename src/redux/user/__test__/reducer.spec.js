@@ -53,4 +53,13 @@ describe('The poem reducer', () => {
             exceptedState
         );
     });
+
+    it('should handle CLEAR_ERROR', () => {
+        const action = {
+            type: types.CLEAR_ERROR,
+        };
+
+        expect(userReducer(undefined, action)).toEqual({});
+        expect(userReducer({ isRegisteredSuccess: false }, action)).toEqual({});
+    });
 });
