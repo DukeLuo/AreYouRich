@@ -1,9 +1,10 @@
+/* eslint-disable no-undefined */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import InputField from '../../components/InputField';
 import { getPoem } from '../../redux/poem/action';
-import { register } from '../../redux/user/action';
+import { register, clearError } from '../../redux/user/action';
 import './index.scss';
 
 export class Home extends Component {
@@ -53,11 +54,11 @@ export class Home extends Component {
         ];
 
         if (
-            // eslint-disable-next-line no-undefined
             this.props.isRegisteredSuccess !== undefined &&
             !this.props.isRegisteredSuccess
         ) {
             alert(this.props.errorMessage);
+            this.props.clearError();
         }
 
         return (
@@ -82,6 +83,7 @@ const mapDispatchToProps = (dispatch) =>
         {
             getPoem,
             register,
+            clearError,
         },
         dispatch
     );

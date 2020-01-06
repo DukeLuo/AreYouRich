@@ -1,5 +1,10 @@
 import { createAction } from 'redux-actions';
-import { USER_LOGIN, USER_REGISTER, USER_REGISTER_ERROR } from './type';
+import {
+    USER_LOGIN,
+    USER_REGISTER,
+    USER_REGISTER_ERROR,
+    CLEAR_ERROR,
+} from './type';
 import * as apis from '../../api';
 
 const registerResponse = createAction(
@@ -19,4 +24,6 @@ const register = (username, password) => (dispatch) =>
         (error) => dispatch(registerError(error))
     );
 
-export { register };
+const clearError = createAction(CLEAR_ERROR);
+
+export { register, clearError };
