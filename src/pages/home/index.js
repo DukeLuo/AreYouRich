@@ -8,6 +8,14 @@ import { register, clearError } from '../../redux/user/action';
 import './index.scss';
 
 export class Home extends Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            username: '',
+            password: '',
+        };
+    }
+
     componentDidMount() {
         this.props.getPoem();
     }
@@ -19,6 +27,7 @@ export class Home extends Component {
                 id: 'input-field-1',
                 description: '用户名',
                 options: {
+                    value: this.state.username,
                     onChange: () =>
                         this.setState({ username: event.target.value }),
                 },
@@ -28,6 +37,7 @@ export class Home extends Component {
                 id: 'input-field-2',
                 description: '密码',
                 options: {
+                    value: this.state.password,
                     onChange: () =>
                         this.setState({ password: event.target.value }),
                 },
@@ -63,9 +73,11 @@ export class Home extends Component {
 
         return (
             <div className="Home" data-testid="home">
-                <InputField config={inputConfig} />
                 <section className="content">
                     <h2 className="poem">{this.props.poem}</h2>
+                    <section className="input-form">
+                        <InputField config={inputConfig} />
+                    </section>
                 </section>
             </div>
         );

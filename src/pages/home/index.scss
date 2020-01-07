@@ -2,9 +2,9 @@
 
 .Home {
     .content {
-        margin-left: $menu-width;
         height: $page-height;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
@@ -13,6 +13,30 @@
             font-size: 32px;
             font-weight: normal;
             letter-spacing: 4px;
+        }
+
+        .input-form {
+            margin-top: 60px;
+            border-radius: 8px;
+        }
+
+        .field:nth-child(3),
+        .field:nth-child(4) {
+            display: inline-block;
+        }
+
+        .field:nth-child(3) input {
+            color: black;
+            background-color: transparent;
+
+            &:hover {
+                background-color: transparent;
+                box-shadow: none;
+            }
+        }
+
+        .field:nth-child(4) {
+            float: right;
         }
     }
 }
