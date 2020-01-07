@@ -70,6 +70,9 @@ export class Home extends Component {
             alert(this.props.errorMessage);
             this.props.clearError();
         }
+        if (this.props.isRegisteredSuccess) {
+            this.props.history.push('/emergency');
+        }
 
         return (
             <div className="Home" data-testid="home">
