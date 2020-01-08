@@ -1,0 +1,23 @@
+@import '../../styles/variables.scss';
+
+.finance-detail {
+    .content {
+        height: $page-height;
+        margin-left: $menu-width;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+
+        .input-form {
+            box-sizing: border-box;
+            width: 320px;
+            height: 320px;
+            padding: 20px;
+
+            .field:last-child {
+                float: right;
+                padding-right: 38px;
+            }
+        }
+    }
+}

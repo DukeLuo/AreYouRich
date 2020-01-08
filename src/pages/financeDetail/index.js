@@ -9,7 +9,9 @@ export class FinanceDetail extends Component {
             <div className="finance-detail">
                 <Menu />
                 <section className="content">
-                    <InputField config={this.props.inputFields} />
+                    <section className="input-form">
+                        <InputField config={this.props.inputFields} />
+                    </section>
                 </section>
             </div>
         );
