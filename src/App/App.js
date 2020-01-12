@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
+import { getStorage } from '../utils/storage';
 import Home from '../pages/home';
 import FinanceDetail from '../pages/financeDetail';
 import financeDetailInputFieldConfig from '../constants/financeDetailInputFieldConfig';
@@ -13,7 +14,17 @@ const financeDetailRender = (routeProps) => {
     } = routeProps;
     const { [match]: inputFieldConfig } = financeDetailInputFieldConfig;
 
-    return <FinanceDetail inputFields={inputFieldConfig} />;
+    if (getStorage('tokenId')) {
+        return <FinanceDetail inputFields={inputFieldConfig} />;
+    }
+    return (
+        <Redirect
+            to={{
+                pathname: '/',
+                state: { from: routeProps.location },
+            }}
+        />
+    );
 };
 
 export class App extends Component {

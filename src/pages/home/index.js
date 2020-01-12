@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Redirect } from 'react-router';
 import InputField from '../../components/InputField';
 import { getPoem } from '../../redux/poem/action';
 import { register, login, clearError } from '../../redux/user/action';
@@ -80,7 +81,14 @@ export class Home extends Component {
         this.alert(this.props.isLoggedInSuccess);
 
         if (this.props.isRegisteredSuccess || this.props.isLoggedInSuccess) {
-            this.props.history.push('/emergency');
+            return (
+                <Redirect
+                    to={{
+                        pathname: '/emergency',
+                        state: { from: this.props.location },
+                    }}
+                />
+            );
         }
 
         return (
