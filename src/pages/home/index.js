@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import InputField from '../../components/InputField';
 import { getPoem } from '../../redux/poem/action';
-import { register, clearError } from '../../redux/user/action';
+import { register, login, clearError } from '../../redux/user/action';
 import './index.scss';
 
 export class Home extends Component {
@@ -14,6 +14,14 @@ export class Home extends Component {
             username: '',
             password: '',
         };
+        this.alert = this.alert.bind(this);
+    }
+
+    alert(signal) {
+        if (signal !== undefined && !signal) {
+            alert(this.props.errorMessage);
+            this.props.clearError();
+        }
     }
 
     componentDidMount() {
@@ -59,18 +67,19 @@ export class Home extends Component {
                 id: 'login-btn',
                 options: {
                     value: '登录',
+                    onClick: () =>
+                        this.props.login(
+                            this.state.username,
+                            this.state.password
+                        ),
                 },
             },
         ];
 
-        if (
-            this.props.isRegisteredSuccess !== undefined &&
-            !this.props.isRegisteredSuccess
-        ) {
-            alert(this.props.errorMessage);
-            this.props.clearError();
-        }
-        if (this.props.isRegisteredSuccess) {
+        this.alert(this.props.isRegisteredSuccess);
+        this.alert(this.props.isLoggedInSuccess);
+
+        if (this.props.isRegisteredSuccess || this.props.isLoggedInSuccess) {
             this.props.history.push('/emergency');
         }
 
@@ -90,6 +99,7 @@ export class Home extends Component {
 const mapStateToProps = (state) => ({
     poem: state.poemReducer.poem,
     isRegisteredSuccess: state.userReducer.isRegisteredSuccess,
+    isLoggedInSuccess: state.userReducer.isLoggedInSuccess,
     errorMessage: state.userReducer.errorMessage,
 });
 
@@ -98,6 +108,7 @@ const mapDispatchToProps = (dispatch) =>
         {
             getPoem,
             register,
+            login,
             clearError,
         },
         dispatch

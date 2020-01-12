@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 import {
     USER_LOGIN,
+    USER_LOGIN_ERROR,
     USER_REGISTER,
     USER_REGISTER_ERROR,
     CLEAR_ERROR,
@@ -26,4 +27,21 @@ const register = (username, password) => (dispatch) =>
 
 const clearError = createAction(CLEAR_ERROR);
 
-export { register, clearError };
+const loginResponse = createAction(
+    USER_LOGIN,
+    (response) => response,
+    () => ({ isLoggedInSuccess: true })
+);
+const loginError = createAction(
+    USER_LOGIN_ERROR,
+    (error) => new Error(error),
+    () => ({ isLoggedInSuccess: false })
+);
+
+const login = (username, password) => (dispatch) =>
+    apis.userLogin(username, password).then(
+        (response) => dispatch(loginResponse(response)),
+        (error) => dispatch(loginError(error))
+    );
+
+export { register, clearError, login };

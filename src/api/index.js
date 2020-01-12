@@ -18,4 +18,16 @@ const userRegister = (username, password) => {
     });
 };
 
-export { getPoem, userRegister };
+const userLogin = (username, password) => {
+    const headers = { 'Content-Type': 'application/json' };
+    const body = JSON.stringify({ username, password });
+
+    return httpService.request({
+        method: 'POST',
+        path: '/api/users/login',
+        headers,
+        body,
+    });
+};
+
+export { getPoem, userRegister, userLogin };
