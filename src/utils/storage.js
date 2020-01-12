@@ -1,8 +1,8 @@
 const KEY = 'ARE_YOU_RICH_STORE';
 
-const getData = () => JSON.parse(window.localStorage.getItem(KEY)) || {};
+const getData = () => JSON.parse(window.sessionStorage.getItem(KEY)) || {};
 const setData = (data) =>
-    window.localStorage.setItem(KEY, JSON.stringify(data));
+    window.sessionStorage.setItem(KEY, JSON.stringify(data));
 
 export const setStorage = (id, value) => {
     const database = getData();
