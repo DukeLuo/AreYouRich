@@ -15,7 +15,9 @@ const financeDetailRender = (routeProps) => {
     const { [match]: inputFieldConfig } = financeDetailInputFieldConfig;
 
     if (getStorage('tokenId')) {
-        return <FinanceDetail inputFields={inputFieldConfig} />;
+        return (
+            <FinanceDetail inputFields={inputFieldConfig} resetField={true} />
+        );
     }
     return (
         <Redirect

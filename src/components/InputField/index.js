@@ -4,13 +4,18 @@ import './index.scss';
 export class InputField extends Component {
     render() {
         // eslint-disable-next-line prefer-destructuring
-        const { config } = this.props;
+        const { config, values } = this.props;
+
         const inputFields = config.map((item, index) => (
             <div className="field" key={index}>
                 <input
                     type={item.type}
                     id={item.id}
                     name={item.id}
+                    value={(values && values[index]) || ''}
+                    onChange={(event) =>
+                        this.props.onChange(event.target.value, index)
+                    }
                     required
                     {...item.options}
                 />
