@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Menu from '../../components/Menu';
 import InputField from '../../components/InputField';
-import inputFieldConfig from '../../constants/financeDetailInputFieldConfig';
+import inputFieldConfig from './inputFieldConfig';
 import './index.scss';
 
 export class FinanceDetail extends Component {

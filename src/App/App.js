@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
 import Home from '../pages/home';
-import FinanceDetail from '../pages/financeDetail';
+import FinanceDetail from '../pages/finance';
 import PrivateRoute from './PrivateRoute';
 import './app.scss';
 
