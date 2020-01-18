@@ -30,4 +30,15 @@ const userLogin = (username, password) => {
     });
 };
 
-export { getPoem, userRegister, userLogin };
+const getEmergencyLevel = (asset, expense, tokenId) =>
+    httpService.request({
+        method: 'GET',
+        path: '/api/finance/emergency-ability',
+        query: {
+            liquidAsset: asset,
+            dailyNecessaryExpenses: expense,
+            tokenId,
+        },
+    });
+
+export { getPoem, userRegister, userLogin, getEmergencyLevel };

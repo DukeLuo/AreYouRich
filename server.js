@@ -17,6 +17,12 @@ const server = new ParcelProxyServer({
                 '^/api': '',
             },
         },
+        '/api/finance/*': {
+            target: 'http://localhost:8080',
+            pathRewrite: {
+                '^/api/finance': '/examine',
+            },
+        },
     },
 });
 

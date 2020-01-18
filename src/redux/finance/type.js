@@ -1,0 +1,3 @@
+export const GET_EMERGENCY_LEVEL = 'GET_EMERGENCY_LEVEL';
+export const CLEAR_LEVEL = 'CLEAR_LEVEL';
+export const GET_LEVEL_ERROR = 'GET_LEVEL_ERROR';

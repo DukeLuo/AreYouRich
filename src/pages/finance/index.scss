@@ -2,22 +2,32 @@
 
 .finance-detail {
     .content {
-        height: $page-height;
-        margin-left: $menu-width;
-        display: flex;
+        height         : $page-height;
+        margin-left    : $menu-width;
+        display        : flex;
         justify-content: center;
-        padding-top: 20px;
+        padding-top    : 20px;
 
         .input-form {
             box-sizing: border-box;
-            width: 320px;
-            height: 320px;
-            padding: 20px;
+            width     : 320px;
+            height    : 320px;
+            padding   : 20px;
 
             .field:last-child {
-                float: right;
-                padding-right: 38px;
+                float        : right;
+                padding-right: 90px;
             }
+        }
+
+        .display-level {
+            h2 {
+                text-align: center;
+            }
+        }
+
+        .error-message {
+            color: red;
         }
     }
 }

@@ -16,6 +16,7 @@ export class InputField extends Component {
                     onChange={(event) =>
                         this.props.onChange(event.target.value, index)
                     }
+                    onClick={item.type === 'button' ? this.props.onClick : null}
                     required
                     {...item.options}
                 />
