@@ -8,6 +8,7 @@ import Dashboard from '../../components/Dashboard';
 import {
     getEmergencyLevel,
     getInterestLevel,
+    getSavingLevel,
     clearDispaly,
 } from '../../redux/finance/action';
 import InputField from '../../components/InputField';
@@ -22,6 +23,7 @@ export class FinanceDetail extends Component {
         this.loadConfigByMatchedPath = this.loadConfigByMatchedPath.bind(this);
         this.getEmergencyHandler = this.getEmergencyHandler.bind(this);
         this.getInterestHandler = this.getInterestHandler.bind(this);
+        this.getSavingHandler = this.getSavingHandler.bind(this);
         this.inputFieldClickHandler = this.inputFieldClickHandler.bind(this);
     }
 
@@ -43,6 +45,12 @@ export class FinanceDetail extends Component {
         this.props.getInterestLevel(fieldValues[0], fieldValues[1]);
     }
 
+    getSavingHandler() {
+        const fieldValues = Object.values(this.state);
+
+        this.props.getSavingLevel(fieldValues[0], fieldValues[1]);
+    }
+
     inputFieldClickHandler() {
         const matchedPath = this.props.match.path;
 
@@ -50,6 +58,8 @@ export class FinanceDetail extends Component {
             return this.getEmergencyHandler();
         } else if (matchedPath === financePaths.INTERNET_PATH) {
             return this.getInterestHandler();
+        } else if (matchedPath === financePaths.SAVING_PATH) {
+            return this.getSavingHandler();
         }
         return null;
     }
@@ -119,6 +129,7 @@ const mapDispatchToProps = (dispatch) =>
         {
             getEmergencyLevel,
             getInterestLevel,
+            getSavingLevel,
             clearDispaly,
         },
         dispatch

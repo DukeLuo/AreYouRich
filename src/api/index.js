@@ -52,10 +52,22 @@ const getInterestLevel = (invest, asset, tokenId) =>
         },
     });
 
+const getSavingLevel = (saving, salary, tokenId) =>
+    httpService.request({
+        method: 'GET',
+        path: '/api/finance/saving-ability',
+        query: {
+            monthlySalary: salary,
+            monthlySaving: saving,
+            tokenId,
+        },
+    });
+
 export {
     getPoem,
     userRegister,
     userLogin,
     getEmergencyLevel,
     getInterestLevel,
+    getSavingLevel,
 };

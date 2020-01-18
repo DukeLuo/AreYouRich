@@ -1,9 +1,10 @@
 import { createAction } from 'redux-actions';
 import {
     GET_EMERGENCY_LEVEL,
+    GET_INTEREST_LEVEL,
+    GET_SAVING_LEVEL,
     CLEAR_LEVEL,
     GET_LEVEL_ERROR,
-    GET_INTEREST_LEVEL,
 } from './type';
 import * as apis from '../../api';
 import * as richStorage from '../../utils/storage';
@@ -38,6 +39,12 @@ const getInterestLevel = (invest, asset) => (dispatch) =>
             (error) => dispatch(getLevelError(error))
         );
 
+const getSavingLevel = (saving, salary) => (dispatch) =>
+    apis.getSavingLevel(saving, salary, richStorage.getStorage('tokenId')).then(
+        (response) => dispatch(getLevelResponse(GET_SAVING_LEVEL, response)),
+        (error) => dispatch(getLevelError(error))
+    );
+
 const clearDispaly = createAction(CLEAR_LEVEL);
 
-export { getEmergencyLevel, getInterestLevel, clearDispaly };
+export { getEmergencyLevel, getInterestLevel, getSavingLevel, clearDispaly };
