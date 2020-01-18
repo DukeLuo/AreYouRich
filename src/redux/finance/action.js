@@ -5,6 +5,7 @@ import {
     GET_SAVING_LEVEL,
     CLEAR_LEVEL,
     GET_LEVEL_ERROR,
+    GET_FINANCE_REPORT,
 } from './type';
 import * as apis from '../../api';
 import * as richStorage from '../../utils/storage';
@@ -45,6 +46,18 @@ const getSavingLevel = (saving, salary) => (dispatch) =>
         (error) => dispatch(getLevelError(error))
     );
 
+const getReportResponse = createAction(GET_FINANCE_REPORT);
+const getReport = () => (dispatch) =>
+    apis
+        .getFinanceReport(richStorage.getStorage('tokenId'))
+        .then((response) => dispatch(getReportResponse(response)));
+
 const clearDispaly = createAction(CLEAR_LEVEL);
 
-export { getEmergencyLevel, getInterestLevel, getSavingLevel, clearDispaly };
+export {
+    getEmergencyLevel,
+    getInterestLevel,
+    getSavingLevel,
+    clearDispaly,
+    getReport,
+};

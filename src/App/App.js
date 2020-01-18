@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
+import PrivateRoute from './PrivateRoute';
 import Home from '../pages/home';
 import FinanceDetail from '../pages/finance';
-import PrivateRoute from './PrivateRoute';
+import FinanceReport from '../pages/report';
 import './app.scss';
 
 export class App extends Component {
@@ -25,6 +26,14 @@ export class App extends Component {
                                 '/saving',
                                 '/interest',
                             ]}
+                        />
+                        <PrivateRoute
+                            component={FinanceReport}
+                            authed={
+                                this.props.isRegisteredSuccess ||
+                                this.props.isLoggedInSuccess
+                            }
+                            path="/report"
                         />
                         <Route path="/" component={Home} />
                     </Switch>

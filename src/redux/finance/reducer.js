@@ -5,6 +5,7 @@ import {
     GET_SAVING_LEVEL,
     CLEAR_LEVEL,
     GET_LEVEL_ERROR,
+    GET_FINANCE_REPORT,
 } from './type';
 
 export default handleActions(
@@ -25,6 +26,9 @@ export default handleActions(
             isGetLevelSuccess: meta.isGetLevelSuccess,
             errorMessage: '计算失败，请检查输入值',
             description: '计算失败，请检查输入值',
+        }),
+        [GET_FINANCE_REPORT]: (_, { payload }) => ({
+            report: payload,
         }),
     },
     {}

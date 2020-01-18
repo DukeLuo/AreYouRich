@@ -12,7 +12,7 @@ describe('The Menu component', () => {
     });
 
     it('should have four items', () => {
-        expect(getAllByTestId('item')).toHaveLength(3);
+        expect(getAllByTestId('item')).toHaveLength(4);
     });
 
     it('should have "应急能力检测"', () => {

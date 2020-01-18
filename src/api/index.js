@@ -63,6 +63,15 @@ const getSavingLevel = (saving, salary, tokenId) =>
         },
     });
 
+const getFinanceReport = (tokenId) =>
+    httpService.request({
+        method: 'GET',
+        path: '/api/finance/reporter',
+        query: {
+            tokenId,
+        },
+    });
+
 export {
     getPoem,
     userRegister,
@@ -70,4 +79,5 @@ export {
     getEmergencyLevel,
     getInterestLevel,
     getSavingLevel,
+    getFinanceReport,
 };

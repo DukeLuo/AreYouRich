@@ -20,6 +20,10 @@ const Menu = () => {
             name: '资产生息能力检测',
             link: '/interest',
         },
+        {
+            name: '我的体检报告',
+            link: '/report',
+        },
     ];
 
     return (

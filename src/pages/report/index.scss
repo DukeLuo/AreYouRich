@@ -1,0 +1,24 @@
+@import '../../styles/variables.scss';
+
+.finance-report {
+    .content {
+        height         : $page-height;
+        margin-left    : $menu-width;
+        display        : flex;
+        justify-content: center;
+
+        .report {
+            #signature {
+                float: right;
+                &:before {
+                    content: "✓";
+                    margin : 10px;
+                }
+
+                span {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
