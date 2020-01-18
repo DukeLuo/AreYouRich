@@ -1,26 +1,43 @@
 import { createAction } from 'redux-actions';
-import { GET_EMERGENCY_LEVEL, CLEAR_LEVEL, GET_LEVEL_ERROR } from './type';
+import {
+    GET_EMERGENCY_LEVEL,
+    CLEAR_LEVEL,
+    GET_LEVEL_ERROR,
+    GET_INTEREST_LEVEL,
+} from './type';
 import * as apis from '../../api';
 import * as richStorage from '../../utils/storage';
 
-const getEmergencyResponse = createAction(
-    GET_EMERGENCY_LEVEL,
-    (content) => content,
-    () => ({ isGetLevelSuccess: true })
-);
 const getLevelError = createAction(
     GET_LEVEL_ERROR,
     (error) => new Error(error),
     () => ({ isGetLevelSuccess: false })
 );
+const getLevelResponse = (type, response) =>
+    createAction(
+        type,
+        (payload) => payload,
+        () => ({ isGetLevelSuccess: true })
+    )(response);
+
 const getEmergencyLevel = (asset, expense) => (dispatch) =>
     apis
         .getEmergencyLevel(asset, expense, richStorage.getStorage('tokenId'))
         .then(
-            (response) => dispatch(getEmergencyResponse(response)),
+            (response) =>
+                dispatch(getLevelResponse(GET_EMERGENCY_LEVEL, response)),
+            (error) => dispatch(getLevelError(error))
+        );
+
+const getInterestLevel = (invest, asset) => (dispatch) =>
+    apis
+        .getInterestLevel(invest, asset, richStorage.getStorage('tokenId'))
+        .then(
+            (response) =>
+                dispatch(getLevelResponse(GET_INTEREST_LEVEL, response)),
             (error) => dispatch(getLevelError(error))
         );
 
 const clearDispaly = createAction(CLEAR_LEVEL);
 
-export { getEmergencyLevel, clearDispaly };
+export { getEmergencyLevel, getInterestLevel, clearDispaly };

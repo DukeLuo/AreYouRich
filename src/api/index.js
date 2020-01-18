@@ -41,4 +41,21 @@ const getEmergencyLevel = (asset, expense, tokenId) =>
         },
     });
 
-export { getPoem, userRegister, userLogin, getEmergencyLevel };
+const getInterestLevel = (invest, asset, tokenId) =>
+    httpService.request({
+        method: 'GET',
+        path: '/api/finance/interest-bearing-assets-ability',
+        query: {
+            investAsset: invest,
+            totalAsset: asset,
+            tokenId,
+        },
+    });
+
+export {
+    getPoem,
+    userRegister,
+    userLogin,
+    getEmergencyLevel,
+    getInterestLevel,
+};

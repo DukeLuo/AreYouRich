@@ -1,10 +1,18 @@
-import { handleActions } from 'redux-actions';
-import { GET_EMERGENCY_LEVEL, CLEAR_LEVEL, GET_LEVEL_ERROR } from './type';
+import { handleActions, combineActions } from 'redux-actions';
+import {
+    GET_EMERGENCY_LEVEL,
+    GET_INTEREST_LEVEL,
+    CLEAR_LEVEL,
+    GET_LEVEL_ERROR,
+} from './type';
 
 export default handleActions(
     {
-        [GET_EMERGENCY_LEVEL]: (_, { payload, meta }) => ({
-            emergencyLevel: (+payload.percent).toFixed(2),
+        [combineActions(GET_EMERGENCY_LEVEL, GET_INTEREST_LEVEL)]: (
+            _,
+            { payload, meta }
+        ) => ({
+            level: (+payload.percent).toFixed(2),
             description: payload.comment,
             isGetLevelSuccess: meta.isGetLevelSuccess,
         }),

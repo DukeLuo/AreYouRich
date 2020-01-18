@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Menu from '../../components/Menu';
 import Dashboard from '../../components/Dashboard';
-import { getEmergencyLevel, clearDispaly } from '../../redux/finance/action';
+import {
+    getEmergencyLevel,
+    getInterestLevel,
+    clearDispaly,
+} from '../../redux/finance/action';
 import InputField from '../../components/InputField';
 import inputFieldConfig from './inputFieldConfig';
 import * as financePaths from './path';
@@ -17,6 +21,7 @@ export class FinanceDetail extends Component {
         this.inputChangeHandler = this.inputChangeHandler.bind(this);
         this.loadConfigByMatchedPath = this.loadConfigByMatchedPath.bind(this);
         this.getEmergencyHandler = this.getEmergencyHandler.bind(this);
+        this.getInterestHandler = this.getInterestHandler.bind(this);
         this.inputFieldClickHandler = this.inputFieldClickHandler.bind(this);
     }
 
@@ -32,11 +37,19 @@ export class FinanceDetail extends Component {
         this.props.getEmergencyLevel(fieldValues[0], fieldValues[1]);
     }
 
+    getInterestHandler() {
+        const fieldValues = Object.values(this.state);
+
+        this.props.getInterestLevel(fieldValues[0], fieldValues[1]);
+    }
+
     inputFieldClickHandler() {
         const matchedPath = this.props.match.path;
 
         if (matchedPath === financePaths.EMERGENCY_PATH) {
             return this.getEmergencyHandler();
+        } else if (matchedPath === financePaths.INTERNET_PATH) {
+            return this.getInterestHandler();
         }
         return null;
     }
@@ -58,7 +71,7 @@ export class FinanceDetail extends Component {
         const DisplayLevel = (props) =>
             props.isGetLevelSuccess ? (
                 <section className="display-level">
-                    <Dashboard score={props.level} />
+                    <Dashboard score={props.level < 0 ? 0 : props.level} />
                     <h2>{props.description}</h2>
                 </section>
             ) : (
@@ -73,7 +86,7 @@ export class FinanceDetail extends Component {
                 <section className="content">
                     {this.props.description ? (
                         <DisplayLevel
-                            level={this.props.emergencyLevel}
+                            level={this.props.level}
                             description={this.props.description}
                             isGetLevelSuccess={this.props.isGetLevelSuccess}
                             errorMessage={this.props.errorMessage}
@@ -95,7 +108,7 @@ export class FinanceDetail extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    emergencyLevel: state.financeReducer.emergencyLevel,
+    level: state.financeReducer.level,
     description: state.financeReducer.description,
     isGetLevelSuccess: state.financeReducer.isGetLevelSuccess,
     errorMessage: state.financeReducer.errorMessage,
@@ -105,6 +118,7 @@ const mapDispatchToProps = (dispatch) =>
     bindActionCreators(
         {
             getEmergencyLevel,
+            getInterestLevel,
             clearDispaly,
         },
         dispatch
