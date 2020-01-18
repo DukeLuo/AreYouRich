@@ -8,10 +8,10 @@ const Menu = () => {
             name: '应急能力检测',
             link: '/emergency',
         },
-        {
-            name: '偿债能力检测',
-            link: '/solvency',
-        },
+        // {
+        //     name: '偿债能力检测',
+        //     link: '/solvency',
+        // },
         {
             name: '储蓄能力检测',
             link: '/saving',
